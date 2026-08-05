@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GlobalApp — Console</title>
+  <meta name="description" content="GlobalApp — Interfaz unificada para consultas avanzadas impulsadas por agentes AI" />
+  <link rel="stylesheet" href="./styles.css" />
+  <meta name="theme-color" content="#071019" />
+</head>
+<body>
+  <div id="app" class="app-root">
+    <header class="app-header">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">GA</div>
+        <div class="brand-text">
+          <h1>GlobalApp</h1>
+          <p class="tag">Consola de Agentes · Interfaz Unificada</p>
+        </div>
+      </div>
+      <nav class="header-actions">
+        <button id="clear-btn" class="ghost">Limpiar</button>
+      </nav>
+    </header>
+
+    <main class="main-grid">
+      <section class="panel panel-left">
+        <label for="query-input" class="visually-hidden">Consulta a GlobalApp</label>
+        <textarea id="query-input" class="query-input" placeholder="Escribe tu consulta (ej. "Análisis geoespacial de riesgo sísmico para la cuenca X, muestras de topografía, y sugerencias de mitigación")" rows="6" spellcheck="true"></textarea>
+
+        <div class="controls">
+          <div class="quick-chips" aria-hidden="true">
+            <button class="chip">Análisis geoespacial</button>
+            <button class="chip">Estudio vial</button>
+            <button class="chip">Riesgo sísmico</button>
+          </div>
+
+          <div class="actions">
+            <div class="status" id="status">Listo</div>
+            <button id="submit-btn" class="primary">Consultar a GlobalApp</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel panel-right">
+        <div class="panel-title">Resultados</div>
+        <div id="results" class="results" aria-live="polite">
+          <div class="empty">Aquí aparecerán los resultados de GlobalApp. Ejecuta una consulta para ver texto enriquecido, tarjetas de datos y marcadores para mapas o gráficos.</div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <div>
+        <small>Webhook objetivo configurado en: <code id="webhook-url-display">(valor por defecto)</code></small>
+      </div>
+      <div>
+        <small>Interfaz cliente — Backend oculto. GlobalApp unifica múltiples fuentes y agentes.</small>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Configuración global editable (puedes sobrescribir este objeto antes de cargar app.js en un deploy) -->
+  <script>
+    // Reemplaza este valor en despliegue o inyecta con tu pipeline CI (p. ej. por transformación de plantilla)
+    window.__GLOBALAPP_CONFIG__ = window.__GLOBALAPP_CONFIG__ || {
+      WEBHOOK_URL: 'https://tu-webhook-externo-o-local/webhook/...'
+    };
+  </script>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
