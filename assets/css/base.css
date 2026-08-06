@@ -1,0 +1,40 @@
+/* base.css — variables and resets for GLOBAPP (Phase 1 scaffold)
+   - This file is a safe extraction of the main CSS variables and a minimal reset.
+   - Created as part of Phase 1 (non-destructive). The app still uses inline styles until we safely switch.
+*/
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-panel: #1a1a2e;
+  --bg-panel-hover: #22223e;
+  --border: #2a2a40;
+  --text-primary: #e8e8f0;
+  --text-secondary: #8892a0;
+  --accent-cyan: #00d4ff;
+  --accent-cyan-dim: rgba(0,212,255,0.15);
+  --accent-orange: #ff6b35;
+  --accent-orange-dim: rgba(255,107,53,0.15);
+  --accent-green: #00e676;
+  --accent-yellow: #ffd600;
+  --accent-red: #ff1744;
+  --shadow: 0 4px 20px rgba(0,0,0,0.5);
+  --radius: 12px;
+  --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* Minimal reset (safe, not aggressive) */
+* { box-sizing: border-box; }
+html,body { height: 100%; }
+body { margin: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+
+/* Light mode variables (kept here for later use) */
+body.light-mode {
+  --bg-primary: #f4f4f9;
+  --bg-secondary: #ffffff;
+  --bg-panel: #eef0f6;
+  --bg-panel-hover: #dfe2ed;
+  --border: #d0d5dd;
+  --text-primary: #1a1a24;
+  --text-secondary: #555b6e;
+  --shadow: 0 4px 20px rgba(0,0,0,0.1);
+}

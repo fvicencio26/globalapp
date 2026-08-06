@@ -1,0 +1,7 @@
+/* theme.css — theme related rules (Phase 1 placeholder)
+   Keep theme-specific rules here (colors, accent variants, dark/light toggles).
+   The file is intentionally minimal during Phase 1 to avoid changing runtime styling.
+*/
+
+/* Example: theme helpers (unused until we wire the new index.html to these files) */
+.theme-accent { color: var(--accent-cyan); }

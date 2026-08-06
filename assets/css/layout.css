@@ -1,0 +1,9 @@
+/* layout.css — layout scaffolding (Phase 1 placeholder)
+   This file will host header, sidebar, main layout rules in an incremental migration.
+   For now it contains comments and a few utility helpers only.
+*/
+
+.header { /* header styles will be migrated here */ }
+.main-layout { display: flex; flex: 1; overflow: hidden; }
+.sidebar { /* sidebar layout */ }
+.content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }

@@ -1,0 +1,6 @@
+/* components.css — reusable components (Phase 1 placeholder)
+   Buttons, cards, badges, metric-cards, etc. will be moved here in next incremental commits.
+*/
+
+.button { padding: 8px 12px; border-radius: 8px; }
+.card { border-radius: 10px; }
