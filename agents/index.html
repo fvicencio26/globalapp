@@ -26,7 +26,7 @@
     <main class="main-grid">
       <section class="panel panel-left">
         <label for="query-input" class="visually-hidden">Consulta a GlobalApp</label>
-        <textarea id="query-input" class="query-input" placeholder="Escribe tu consulta (ej. "Análisis geoespacial de riesgo sísmico para la cuenca X, muestras de topografía, y sugerencias de mitigación")" rows="6" spellcheck="true"></textarea>
+        <textarea id="query-input" class="query-input" placeholder="Escribe tu consulta (ej. 'Análisis geoespacial de riesgo sísmico para la cuenca X, muestras de topografía, y sugerencias de mitigación')" rows="6" spellcheck="true"></textarea>
 
         <div class="controls">
           <div class="quick-chips" aria-hidden="true">
@@ -52,7 +52,7 @@
 
     <footer class="app-footer">
       <div>
-        <small>Webhook objetivo configurado en: <code id="webhook-url-display">(valor por defecto)</code></small>
+        <small>Webhook objetivo configurado en: <code id="webhook-url-display">http://localhost:5681/webhook/...</code></small>
       </div>
       <div>
         <small>Interfaz cliente — Backend oculto. GlobalApp unifica múltiples fuentes y agentes.</small>
@@ -64,7 +64,7 @@
   <script>
     // Reemplaza este valor en despliegue o inyecta con tu pipeline CI (p. ej. por transformación de plantilla)
     window.__GLOBALAPP_CONFIG__ = window.__GLOBALAPP_CONFIG__ || {
-      WEBHOOK_URL: 'https://tu-webhook-externo-o-local/webhook/...'
+      WEBHOOK_URL: 'http://localhost:5681/webhook/...'
     };
   </script>
 
