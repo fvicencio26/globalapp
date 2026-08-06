@@ -154,7 +154,7 @@
 
   /* ===== SIDEBAR ===== */
   .sidebar {
-    width: 240px;
+    width: 260px;
     background: var(--bg-secondary);
     border-right: 1px solid var(--border);
     display: flex;
@@ -178,12 +178,12 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 10px 12px;
+    padding: 8px 10px;
     border-radius: 8px;
     cursor: pointer;
     transition: var(--transition);
     margin-bottom: 4px;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--text-secondary);
     position: relative;
   }
@@ -196,7 +196,7 @@
     color: var(--accent-cyan);
     border-left: 3px solid var(--accent-cyan);
   }
-  .nav-item i { width: 20px; text-align: center; font-size: 0.9rem; }
+  .nav-item i { width: 20px; text-align: center; font-size: 0.85rem; }
   .nav-badge {
     margin-left: auto;
     background: var(--accent-red);
@@ -599,7 +599,7 @@
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 1200px) {
-    .sidebar { width: 200px; }
+    .sidebar { width: 220px; }
     .right-panel { width: 280px; }
     .metrics-bar { grid-template-columns: repeat(2, 1fr); }
   }
@@ -650,7 +650,7 @@
   </div>
   <div class="header-center">
     <div class="live-dot"></div>
-    <span>Sistema Operativo — 5 Agentes Activos</span>
+    <span>Sistema Operativo — 19 Agentes Activos</span>
     <span style="color:var(--border)">|</span>
     <span id="last-update">Última actualización: en vivo</span>
   </div>
@@ -670,33 +670,85 @@
   <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-section">
-      <div class="sidebar-title">Agentes Activos</div>
+      <div class="sidebar-title">Agentes Activos (19)</div>
       <div class="nav-item active" onclick="switchAgent('all')">
         <i class="fas fa-layer-group"></i>
         <span>Vista General</span>
-        <span class="nav-badge">5</span>
+        <span class="nav-badge">19</span>
+      </div>
+      <div class="nav-item" onclick="switchAgent('orquestador')">
+        <i class="fas fa-network-wired"></i>
+        <span>1. Orquestador GlobalApp</span>
       </div>
       <div class="nav-item" onclick="switchAgent('seismo')">
         <i class="fas fa-house-crack"></i>
-        <span>Agente Sísmico</span>
+        <span>2. Ingeniero Sísmico</span>
         <span class="nav-badge">USGS</span>
       </div>
-      <div class="nav-item" onclick="switchAgent('hydro')">
-        <i class="fas fa-water"></i>
-        <span>Agente Hidrológico</span>
-      </div>
-      <div class="nav-item" onclick="switchAgent('climate')">
+      <div class="nav-item" onclick="switchAgent('meteo')">
         <i class="fas fa-cloud-sun"></i>
-        <span>Agente Climático</span>
+        <span>3. Ingeniero Meteorológico</span>
       </div>
-      <div class="nav-item" onclick="switchAgent('fire')">
+      <div class="nav-item" onclick="switchAgent('incendios')">
         <i class="fas fa-fire"></i>
-        <span>Agente Firewatch</span>
+        <span>4. Ingeniero de Incendios</span>
         <span class="nav-badge">NASA</span>
       </div>
-      <div class="nav-item" onclick="switchAgent('route')">
-        <i class="fas fa-route"></i>
-        <span>Agente Route</span>
+      <div class="nav-item" onclick="switchAgent('geoespacial')">
+        <i class="fas fa-globe"></i>
+        <span>5. Ingeniero Geoespacial</span>
+      </div>
+      <div class="nav-item" onclick="switchAgent('ambiental')">
+        <i class="fas fa-leaf"></i>
+        <span>6. Ingeniero Ambiental</span>
+      </div>
+      <div class="nav-item" onclick="switchAgent('predictivo')">
+        <i class="fas fa-chart-line"></i>
+        <span>7. Ingeniero Predictivo</span>
+      </div>
+      <div class="nav-item" onclick="switchAgent('multiamenaza')">
+        <i class="fas fa-triangle-exclamation"></i>
+        <span>8. Ingeniero MultiAmenaza</span>
+      </div>
+      <div class="nav-item" onclick="switchAgent('coordinador')">
+        <i class="fas fa-sitemap"></i>
+        <span>9. Coordinador Multiagente</span>
+      </div>
+      <div class="nav-item" onclick="switchAgent('cards')">
+        <i class="fas fa-id-card"></i>
+        <span>10. Agente-Generador-Cards</span>
+      </div>
+      <div class="nav-item" onclick="switchAgent('validador-datos')">
+        <i class="fas fa-check-double"></i>
+        <span>11. Agente-Validador-Datos</span>
+      </div>
+      <div class="nav-item" onclick="switchAgent('mapdata')">
+        <i class="fas fa-map-marked-alt"></i>
+        <span>12. Agente-Generador-MapData</span>
+      </div>
+      <div class="nav-item" onclick="switchAgent('reportes')">
+        <i class="fas fa-file-alt"></i>
+        <span>13. Agente-Generador-Reportes</span>
+      </div>
+      <div class="nav-item" onclick="switchAgent('orquestador-central')">
+        <i class="fas fa-server"></i>
+        <span>14. Agente-Orquestador-Central</span>
+      </div>
+      <div class="nav-item" onclick="switchAgent('analizador-logs')">
+        <i class="fas fa-terminal"></i>
+        <span>15. Agente-Analizador-Logs</span>
+      </div>
+      <div class="nav-item" onclick="switchAgent('optimizador')">
+        <i class="fas fa-tachometer-alt"></i>
+        <span>16. Optimizador-Consultas</span>
+      </div>
+      <div class="nav-item" onclick="switchAgent('validador-seguridad')">
+        <i class="fas fa-shield-alt"></i>
+        <span>17. Agente-Validador-Seguridad</span>
+      </div>
+      <div class="nav-item" onclick="switchAgent('memoria')">
+        <i class="fas fa-brain"></i>
+        <span>18. Agente Memoria Contextual</span>
       </div>
     </div>
 
@@ -906,8 +958,8 @@
 <footer class="footer">
   <div class="footer-left">
     <span><i class="fas fa-satellite-dish" style="color:var(--accent-cyan);margin-right:6px;"></i>GLOBAPP v0.2 — TrimaranTec Holding</span>
-    <span class="footer-tag">n8n: 5680</span>
-    <span class="footer-tag">5 Agentes</span>
+    <span class="footer-tag">n8n: 5681</span>
+    <span class="footer-tag">19 Agentes</span>
   </div>
   <div class="footer-right">
     <span>Datos: USGS | Open-Meteo | NASA FIRMS</span>
