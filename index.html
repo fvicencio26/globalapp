@@ -58,18 +58,24 @@
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 6px; }
 
+  /* subtle animations */
+  .fade-in { animation: fadeIn .45s ease both; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity:1; transform:none; } }
+  .float-up { transition: transform 0.4s var(--transition); }
+  .float-up:hover { transform: translateY(-6px); }
+
   /* ===== TOP NAV / HEADER (professional) ===== */
   .header {
-    height: 64px;
+    height: 68px;
     background: linear-gradient(90deg, rgba(255,255,255,0.02), transparent);
-    border-bottom: 1px solid rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(255,255,255,0.03);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
     gap:16px;
     z-index: 12000;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(6px);
   }
   .header-left { display:flex; align-items:center; gap:18px; }
   .brand-compact{display:flex;align-items:center;gap:12px}
@@ -88,6 +94,9 @@
   .global-search input{background:transparent;border:0;color:var(--text-primary);outline:none;width:100%;font-size:0.95rem}
   .global-search .shortcut{font-size:0.75rem;color:var(--text-secondary);padding:4px 8px;border-radius:6px;background:transparent;border:1px solid transparent}
 
+  .header-center { display:flex; align-items:center; gap:12px; }
+  .header-meta { color:var(--text-secondary); font-size:0.85rem; display:flex; gap:12px; align-items:center }
+
   .header-right{display:flex;align-items:center;gap:12px}
   .icon-btn{background:transparent;border:0;color:var(--text-secondary);padding:8px;border-radius:10px;cursor:pointer}
   .icon-btn:hover{color:var(--accent-turquoise);background:var(--bg-panel-hover)}
@@ -95,15 +104,27 @@
   .notif-badge .badge-dot{position:absolute;top:6px;right:6px;width:10px;height:10px;border-radius:50%;background:var(--accent-orange);box-shadow:0 0 6px rgba(255,122,61,0.5)}
   .user-avatar{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#0b2633,#06202a);display:flex;align-items:center;justify-content:center;color:var(--accent-turquoise);font-weight:700}
 
+  .clock {font-variant-numeric: tabular-nums; font-weight:600}
+
+  /* ===== STATUS BAR (new, under header) ===== */
+  .status-bar {
+    height:46px; display:flex; align-items:center; gap:12px; padding:0 18px; border-bottom:1px solid rgba(255,255,255,0.02);
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+  }
+  .status-pill{background:var(--bg-panel);border:1px solid var(--border);padding:8px 12px;border-radius:999px;color:var(--text-secondary);display:flex;gap:8px;align-items:center}
+  .status-pill strong{color:var(--text-primary);font-weight:700}
+
   /* ===== MAIN LAYOUT ===== */
   .main-layout{display:flex;flex:1;overflow:hidden;padding:18px;gap:18px}
 
-  /* ===== SIDEBAR (compact premium) ===== */
-  .sidebar{width:84px;background:transparent;border-right:1px solid transparent;display:flex;flex-direction:column;gap:12px;padding-top:8px}
+  /* ===== SIDEBAR (compact premium, collapsible) ===== */
+  .sidebar{width:96px;background:transparent;border-right:1px solid transparent;display:flex;flex-direction:column;gap:12px;padding-top:8px;transition:width .28s ease}
+  .sidebar.collapsed{width:64px}
   .sidebar .nav-btn{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px;border-radius:10px;color:var(--text-secondary);cursor:pointer;border:1px solid transparent}
   .sidebar .nav-btn i{font-size:18px;color:var(--text-secondary)}
   .sidebar .nav-btn.active{background:linear-gradient(180deg,var(--bg-panel),transparent);border:1px solid var(--border);color:var(--accent-turquoise);box-shadow:var(--shadow)}
   .sidebar .nav-label{font-size:11px;color:var(--text-secondary);margin-top:6px}
+  .sidebar .collapse-toggle{margin-top:auto;margin-bottom:6px;align-self:center}
 
   /* ===== WORKSPACE / MAP (center) ===== */
   .workspace{flex:1;display:flex;flex-direction:column;gap:12px;min-width:0}
@@ -113,13 +134,13 @@
 
   /* overlay cards on map for KPI & quick actions */
   .map-overlays{position:absolute;top:18px;left:18px;display:flex;flex-direction:column;gap:12px;z-index:1100}
-  .kpi-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border:1px solid var(--border);padding:12px;border-radius:10px;min-width:180px;color:var(--text-primary);box-shadow:0 6px 20px rgba(3,10,18,0.6)}
+  .kpi-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border:1px solid var(--border);padding:12px;border-radius:10px;min-width:180px;color:var(--text-primary);box-shadow:0 6px 20px rgba(2,8,20,0.35)}
   .kpi-row{display:flex;align-items:center;gap:10px}
   .kpi-value{font-weight:800;font-size:1.25rem}
   .kpi-label{font-size:0.75rem;color:var(--text-secondary)}
 
   /* ===== RIGHT PANEL (info) ===== */
-  .right-panel{width:340px;display:flex;flex-direction:column;gap:12px}
+  .right-panel{width:360px;display:flex;flex-direction:column;gap:12px}
   .panel-box{background:var(--bg-panel);border:1px solid var(--border);border-radius:12px;padding:12px}
   .panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
   .panel-header h3{font-size:0.85rem;color:var(--text-primary)}
@@ -141,15 +162,20 @@
     .global-search{min-width:220px}
   }
 
+  /* small helpers */
+  .muted { color: var(--text-secondary); }
+  .chip { background: transparent; border:1px solid var(--border); color:var(--text-secondary); padding:6px 10px; border-radius:8px; cursor:pointer }
+
 </style>
 </head>
 <body>
 
 <!-- HEADER -->
-<header class="header">
+<header class="header fade-in">
   <div class="header-left">
+    <button class="icon-btn" title="Toggle sidebar" id="btn-toggle" aria-label="Alternar barra lateral"><i class="fas fa-bars"></i></button>
     <div class="brand-compact">
-      <div class="logo"><i class="fas fa-globe-americas"></i></div>
+      <div class="logo" aria-hidden="true"><i class="fas fa-globe-americas"></i></div>
       <div class="product-title">
         <div class="name">GLOBAPP</div>
         <div class="tag">Centro Mundial de Inteligencia Científica</div>
@@ -162,6 +188,12 @@
     </div>
   </div>
 
+  <div class="header-center">
+    <div class="header-meta muted" id="breadcrumb">Dashboard · Ciencia · Mapa Global</div>
+    <div class="muted">|</div>
+    <div class="header-meta muted"><span class="clock" id="clock">--:--:--</span></div>
+  </div>
+
   <div class="header-right">
     <button class="icon-btn" title="Estado del sistema" id="system-status"><i class="fas fa-signal"></i></button>
     <div class="notif-badge">
@@ -170,36 +202,51 @@
     </div>
     <button class="icon-btn" title="Configuración" id="btn-settings"><i class="fas fa-cog"></i></button>
     <div class="user-avatar" id="user-avatar">GV</div>
+    <button class="icon-btn" id="btn-login" title="Iniciar sesión" aria-haspopup="dialog">Iniciar</button>
   </div>
 </header>
+
+<!-- STATUS BAR -->
+<div class="status-bar fade-in">
+  <div class="status-pill"><i class="fas fa-check-circle" style="color:var(--accent-green)"></i> <strong id="status-online">Servicios: OK</strong></div>
+  <div class="status-pill"><i class="fas fa-satellite-dish"></i> <span class="muted">Streams:</span> <strong id="status-streams">USGS • FIRMS</strong></div>
+  <div class="status-pill"><i class="fas fa-database"></i> <span class="muted">Última sync:</span> <strong id="status-sync">2m</strong></div>
+  <div style="flex:1"></div>
+  <div class="status-pill" id="module-switcher" role="tablist" aria-label="Módulos">
+    <button class="chip" data-module="dashboard" aria-selected="true">Dashboard</button>
+    <button class="chip" data-module="agents">Agentes</button>
+    <button class="chip" data-module="reports">Reportes</button>
+  </div>
+</div>
 
 <!-- MAIN LAYOUT -->
 <div class="main-layout">
 
   <!-- SIDEBAR (compact icons) -->
-  <aside class="sidebar" id="sidebar">
+  <aside class="sidebar" id="sidebar" aria-label="Barra lateral" data-collapsed="false">
     <div class="nav-btn active" data-key="dashboard" title="Dashboard" onclick="switchAgent('all')"><i class="fas fa-home"></i><div class="nav-label">Inicio</div></div>
     <div class="nav-btn" data-key="map" title="Mapa" onclick="setMapView('mundo')"><i class="fas fa-map-marked-alt"></i><div class="nav-label">Mapa</div></div>
     <div class="nav-btn" data-key="agents" title="Agentes" onclick="switchAgent('agents')"><i class="fas fa-network-wired"></i><div class="nav-label">Agentes</div></div>
     <div class="nav-btn" data-key="reports" title="Reportes" onclick="switchAgent('reportes')"><i class="fas fa-file-alt"></i><div class="nav-label">Reportes</div></div>
     <div style="flex:1"></div>
     <div class="nav-btn" data-key="admin" title="Admin" onclick="switchAgent('admin')"><i class="fas fa-shield-alt"></i><div class="nav-label">Admin</div></div>
+    <button class="icon-btn collapse-toggle" id="collapse-sidebar" aria-label="Colapsar barra lateral"><i class="fas fa-chevron-left"></i></button>
   </aside>
 
   <!-- WORKSPACE (MAP CENTER) -->
-  <section class="workspace">
+  <section class="workspace" id="workspace" data-module="dashboard">
     <div class="map-wrap">
       <div id="globe-map"></div>
 
-      <div class="map-overlays">
-        <div class="kpi-card">
+      <div class="map-overlays" id="map-overlays">
+        <div class="kpi-card float-up" aria-hidden="true">
           <div class="kpi-row"><div class="kpi-value" id="kpi-agentes">19</div><div class="kpi-label">Agentes Online</div></div>
         </div>
-        <div class="kpi-card">
+        <div class="kpi-card float-up" aria-hidden="true">
           <div class="kpi-row"><div class="kpi-value" id="kpi-alertas">3</div><div class="kpi-label">Alertas Activas</div></div>
         </div>
-        <div class="kpi-card" id="quick-actions">
-          <div style="display:flex;gap:8px"><button class="icon-btn" onclick="refreshData()"><i class="fas fa-sync-alt"></i></button><button class="icon-btn" onclick="generateReport()"><i class="fas fa-file-pdf"></i></button></div>
+        <div class="kpi-card float-up" id="quick-actions">
+          <div style="display:flex;gap:8px"><button class="icon-btn" onclick="refreshData()"><i class="fas fa-sync-alt"></i></button><button class="icon-btn" onclick="generateReport()"><i class="fas fa-file-pdf"></i></button><button class="icon-btn" onclick="centerMap()"><i class="fas fa-crosshairs"></i></button></div>
         </div>
       </div>
     </div>
@@ -234,8 +281,8 @@
     <div class="panel-box">
       <div class="panel-header"><h3>Actividad Reciente</h3><div style="font-size:0.85rem;color:var(--text-secondary)">En vivo</div></div>
       <div style="display:flex;flex-direction:column;gap:10px">
-        <div class="alert-item info"><div class="alert-icon info"><i class="fas fa-satellite-dish"></i></div><div class="alert-content"><div class="alert-title">USGS stream</div><div class="alert-desc">3 eventos de magnitud &gt; 4.0 en las últimas 2h</div></div></div>
-        <div class="alert-item warning"><div class="alert-icon warning"><i class="fas fa-fire"></i></div><div class="alert-content"><div class="alert-title">NASA FIRMS</div><div class="alert-desc">Actividad de incendios detectada en zona X</div></div></div>
+        <div class="alert-item info"><div class="alert-icon info"><i class="fas fa-satellite-dish"></i></div><div class="alert-content"><div class="alert-title">USGS stream</div><div class="alert-desc muted">Recibiendo eventos</div></div></div>
+        <div class="alert-item warning"><div class="alert-icon warning"><i class="fas fa-fire"></i></div><div class="alert-content"><div class="alert-title">NASA FIRMS</div><div class="alert-desc muted">Actualizaciones de incendios</div></div></div>
       </div>
     </div>
 
@@ -254,25 +301,49 @@
 <!-- FOOTER -->
 <footer class="footer">GLOBAPP — Centro Mundial de Inteligencia Científica · TrimaranTec Holding</footer>
 
+<!-- AUTH MODAL (placeholder for future auth) -->
+<dialog id="auth-modal" aria-labelledby="auth-title">
+  <form method="dialog" style="padding:18px;width:360px;background:var(--bg-panel);color:var(--text-primary);border-radius:12px;border:1px solid var(--border)">
+    <h3 id="auth-title">Iniciar sesión (próximamente)</h3>
+    <p class="muted">Autenticación y permisos serán integrados en próximas iteraciones.</p>
+    <div style="display:flex;gap:8px;margin-top:12px">
+      <button class="chip" value="cancel">Cerrar</button>
+      <button class="chip" value="demo">Acceso demo</button>
+    </div>
+  </form>
+</dialog>
+
 <script>
 // Keep existing JS behavior: updateClock, toggleSidebar, refreshData, generateReport, setMapView, switchAgent
 function updateClock(){const now=new Date();const clockEl=document.getElementById('clock');if(clockEl)clockEl.textContent=now.toLocaleTimeString('es-CL',{hour12:false});}
 setInterval(updateClock,1000);updateClock();
 
-function toggleSidebar(){document.getElementById('sidebar').classList.toggle('open');}
+function toggleSidebar(){const sb=document.getElementById('sidebar');const collapsed=sb.classList.toggle('collapsed');sb.setAttribute('data-collapsed',collapsed);document.getElementById('collapse-sidebar').innerHTML = collapsed ? '<i class="fas fa-chevron-right"></i>' : '<i class="fas fa-chevron-left"></i>';}
 
-function refreshData(){console.info('Refreshing data...');}
-function generateReport(){console.info('Generating report...');}
+document.getElementById('btn-toggle')?.addEventListener('click',toggleSidebar);
+document.getElementById('collapse-sidebar')?.addEventListener('click',toggleSidebar);
+
+function refreshData(){console.info('Refreshing data...');const el=document.getElementById('kpi-agentes');if(el){el.textContent = Math.max(12, Math.floor(Math.random()*30));el.animate([{opacity:0.6},{opacity:1}],{duration:450,easing:'ease-out'});} }
+function generateReport(){console.info('Generating report...');alert('Generando reporte (simulado)');}
 function setMapView(view){console.info('setMapView',view);}
-function switchAgent(id){console.info('switchAgent',id);}
+function switchAgent(id){console.info('switchAgent',id);document.querySelectorAll('.sidebar .nav-btn').forEach(n=>n.classList.toggle('active', n.dataset.key===id));}
+function centerMap(){try{if(window._mapInstance){_mapInstance.setView([0,0],2);} }catch(e){}
+}
 
-// Small enhancement: Ctrl+K to focus global search
+// ctrl+k to focus global search
 window.addEventListener('keydown', (e)=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();const el=document.getElementById('global-search-input');el&&el.focus();}});
+
+// Auth modal
+document.getElementById('btn-login')?.addEventListener('click', ()=>{const d=document.getElementById('auth-modal'); if(typeof d.showModal==='function'){d.showModal()} else {alert('Auth modal (demo)')}});
+
+// Module switcher
+document.querySelectorAll('#module-switcher [data-module]').forEach(btn=>{btn.addEventListener('click', ()=>{document.querySelectorAll('#module-switcher [data-module]').forEach(b=>b.setAttribute('aria-selected','false')); btn.setAttribute('aria-selected','true'); const module = btn.getAttribute('data-module'); document.getElementById('workspace').setAttribute('data-module', module); console.info('switch module',module);});});
 
 // Initialize a simple Leaflet map without changing existing integration
 try{
   const map = L.map('globe-map',{zoomControl:true}).setView([0,0],2);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
+  window._mapInstance = map;
 }catch(err){console.warn('Leaflet init failed (maybe running without network in preview)',err)}
 
 </script>
